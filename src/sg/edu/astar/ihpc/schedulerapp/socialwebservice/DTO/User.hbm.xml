@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="sg.edu.astar.ihpc.schedulerapp.socialwebservice.DTO.User" table="USER">
+		<id name="id" column="ID" type="integer">
+			<generator class="identity"></generator>
+		</id>
+		<property name="orgId" column="ORG_ID" type="string" length="250">
+		</property>
+		<property name="name" column="NAME" type="string" length="250" unique="true">
+		</property>
+		<property name="password" column="PASSWORD" type="string" length="250" unique="true">
+		</property>
+		<property name="token" column="TOKEN" type="string" length="250">
+		</property>
+		<property name="loginTime" column="LOGIN_TIME" type="timestamp">
+		</property>
+		<property name="gender" column="GENDER" type="string" length="10">
+		</property>
+		<property name="familyName" column="FAMILY_NAME" type="string" length="250">
+		</property>
+		<property name="givenName" column="GIVEN_NAME" type="string" length="250">
+		</property>
+		<property name="imageUrl" column="IMAGE_URL" type="string" length="1000">
+		</property>
+		<property name="birthday" column="BIRTHDAY" type="java.sql.Date">
+		</property>
+		<property name="email" column="EMAIL" type="string" length="500">
+		</property>
+		<property name="locale" column="LOCALE" type="string" length="100">
+		</property>
+		<property name="link" column="LINK" type="string" length="1000">
+		</property>
+		<property name="source" column="SOURCE" type="string" length="50">
+		</property>
+		<property name="createTime" column="CREATE_TIME" type="timestamp">
+		</property>
+		<property name="updateTime" column="UPDATE_TIME" type="timestamp">
+		</property>
+		
+		<set name="friends" table="USER_RELATIONSHIP">
+			<key column="USER_ID"></key>
+			<many-to-many class="sg.edu.astar.ihpc.schedulerapp.socialwebservice.DTO.User" column="FRIEND_ID"/>
+		</set>
+		
+		<set name="userLastRequests" inverse="true" cascade="all">
+			<key column="USER_ID"></key>
+			<one-to-many class="sg.edu.astar.ihpc.schedulerapp.socialwebservice.DTO.UserLastRequestResult"/>
+		</set>
+		
+	</class>
+</hibernate-mapping>

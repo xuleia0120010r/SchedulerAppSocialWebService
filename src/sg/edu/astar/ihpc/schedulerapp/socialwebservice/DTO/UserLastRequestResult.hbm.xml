@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="sg.edu.astar.ihpc.schedulerapp.socialwebservice.DTO.UserLastRequestResult" table="USER_LAST_REQUEST_RESULT">
+        <id name="id" column="ID" type="long">
+            <generator class="identity"></generator>
+        </id>
+        <!-- <property name="userId" column="USER_ID" type="integer" not-null="true">
+        </property> -->
+        <property name="task" column="TASK" type="string" length="500" not-null="true">
+        </property>
+        <property name="companyName" column="COMPANY_NAME" type="string" length="200" not-null="true">
+        </property>
+        <property name="category" column="CATEGORY" type="string" length="500">
+        </property>
+        <property name="address" column="ADDRESS" type="string" length="500" not-null="true">
+        </property>
+        <property name="postalCode" column="POSTAL_CODE" type="string" length="10">
+        </property>
+        <property name="latLng" column="LAT_LNG" type="string" length="50" not-null="true">
+        </property>
+        <property name="suburb" column="SUBURB" type="string" length="50" not-null="true">
+        </property>
+        <property name="sourceUrl" column="SOURCE_URL" type="string" length="2000">
+        </property>
+        <property name="ratingValue" column="RATING_VALUE" type="big_decimal">
+        </property>
+        <property name="numberOfReviewer" column="NUMBER_OF_REVIEWER" type="integer" length="11">
+        </property>
+        <property name="taskTime" column="TASK_TIME" type="timestamp">
+        </property>
+        <property name="lastUpdateTime" column="LAST_UPDATE_TIME" type="timestamp">
+        </property>
+        
+        <many-to-one name="user" class="sg.edu.astar.ihpc.schedulerapp.socialwebservice.DTO.User" column="USER_ID"/>
+        
+    </class>
+</hibernate-mapping>
